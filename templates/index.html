@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+<ul>
+{% for data in jsonData %}
+    <li>{{ data.fields.name }} {{ data.fields.gender }} {{ data.fields.fraction }}</li>
+{% endfor %}
+</ul>
+</body>
+</html>
