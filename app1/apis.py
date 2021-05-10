@@ -1,3 +1,5 @@
+import json
+
 from django.core import serializers
 from django.http import JsonResponse
 from . import models
@@ -16,8 +18,8 @@ def find_all(request):
 
 def add_class(request):
     if request.method == 'POST':
-        if request.POST:
-            name = request.POST['name']
+        if request.body:
+            name = json.loads(request.body)['name']
             c = Class(name=name)
             a = c.save()
             print(a)
