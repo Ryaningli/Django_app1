@@ -19,7 +19,6 @@ from app1 import views, apis
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/findAll/', apis.find_all),
-    path('api/addClass/', apis.add_class),
+    path('api/class', apis.manage_class),
     re_path('', views.index),
 ]
