@@ -9,3 +9,7 @@ def index(request):
     students = serializers.serialize('python', r)
     context['jsonData'] = students
     return render(request, 'index.html', context)
+
+
+def add_class(request):
+    return render(request, 'addClass.html')

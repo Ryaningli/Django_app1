@@ -3,23 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="/static/js/jquery-3.6.0.js"></script>
+    <script src="../static/js/jquery-3.6.0.js"></script>
 </head>
 <body>
-<div id="test-response-text"></div>
+<p id="test-response-text"></p>
 </body>
 <script>
     function ajaxLog(s) {
         let txt = $('#test-response-text');
-        txt.text(txt.text() + '\n' + s)
+        txt.val(txt.val() + '\n' + s);
     }
 
-    let jq = $.get('http://127.0.0.1:8000/api/class',
-        {
-            page: 1,
-            pagesize: 2
-        }).done(function (data) {
-        ajaxLog('成功收到数据: ' + JSON.stringify(data.data));
+    let jq = $.get('http://127.0.0.1:8000/api/class').done(function (data) {
+        ajaxLog('成功收到数据: ' + data);
     }).fail(function (xhr, status) {
         ajaxLog('失败' + xhr.status + ', 原因:' + status);
     }).always(function () {

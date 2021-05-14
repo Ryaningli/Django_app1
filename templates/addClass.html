@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加班级</title>
+    <link rel="stylesheet" href="/static/css/uikit.min.css"/>
+    <script src="/static/js/uikit.min.js"></script>
+    <script src="/static/js/uikit-icons.min.js"></script>
+    <script src="/static/js/jquery-3.6.0.js"></script>
+</head>
+<body>
+<form>
+    <fieldset class="uk-fieldset">
+
+        <legend class="uk-legend">添加班级</legend>
+
+        <div class="uk-margin">
+            <input class="uk-input uk-width-small" type="text" placeholder="输入班级名" maxlength="10">
+        </div>
+
+        <div class="uk-margin">
+            <button id="submit" type="submit" class="uk-button uk-button-primary">提交</button>
+        </div>
+    </fieldset>
+</form>
+</body>
+<script>
+    $(function () {
+        let btn = $('button');
+        let name = $('input');
+        btn.click(function () {
+            if (!name.val()) {
+                UIkit.notification('班级不可为空', 'warning')
+                console.log('fasfasfsdfsd')
+            } else {
+                console.log('8415641564156')
+                let jqxhr = $.post('http://127.0.0.1:8000/api/class', {name: name.val()}).done(function (data) {
+                    UIkit.notification(data.msg, 'success')
+                })
+            }
+        })
+    })
+</script>
+</html>
